@@ -60,8 +60,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        
-        
         for touch in touches {
             let touchLocation = touch.locationInNode(self)
             player?.position.x = touchLocation.x
@@ -77,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             let touchLocation = touch.locationInNode(self)
             
-            if isAlive == true{
+            if isAlive == true {
                 player?.position.x = touchLocation.x
                 player?.position.y = touchLocation.y
             }
@@ -91,6 +89,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if isAlive == false {
+            player?.position.x = -200
+        }
+    
     }
     //END OF FUNC: update
 
@@ -144,12 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func spawnEnemy() {
         enemy = SKSpriteNode(imageNamed: "Enemy1")
-        let minValue = self.size.width/8
-        let maxValue = self.size.width-20
-        let spawnPoint = UInt32(maxValue - minValue)
+        //let minValue = self.size.width/8
+        //let maxValue = self.size.width-40
+        //let spawnPoint = UInt32(maxValue - minValue)
         
-        //enemy = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width:30, height:30))
-        enemy!.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
+        enemy!.position = CGPoint(x: Int(arc4random_uniform(1000)+300), y: 1000)
 
         enemy?.physicsBody = SKPhysicsBody(rectangleOfSize: (enemy?.size)!)
         enemy?.physicsBody?.affectedByGravity = false
@@ -192,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.runAction(SKAction.sequence([explosionTimerRemove, removeExplosion]))
         
     }
+    // END OF FUNC: spawnShipExplosion
     
     func spawnShipExplosion(playerTemp: SKSpriteNode) {
         
@@ -213,6 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.runAction(SKAction.sequence([shipExplosionTimerRemove, shipRemoveExplosion]))
         
     }
+    // END OF FUNC: spawnShipExplosion
     
     func randomEnemyTimerSpawn() {
         let spawnEnemyTimer = SKAction.waitForDuration(enemySpawnRate)
@@ -277,6 +280,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
     }
+    //END OF FUNC: didBeginContact
     
     func weaponCollision(enemyTemp: SKSpriteNode, weaponTemp: SKSpriteNode) {
         enemyTemp.removeFromParent()
@@ -286,6 +290,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         updateScore()
     }
+    //END OF FUNC: weaponCollision
     
     func playerCollision(playerTemp: SKSpriteNode, enemyTemp: SKSpriteNode) {
         mainLabel?.fontSize = 50
@@ -293,18 +298,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         mainLabel?.text = "Game Over"
         
         player?.removeFromParent()
+        //enemy?.removeFromParent()
+        //weapon?.removeFromParent()
         
         isAlive = false
         
-        waitThemMovetoTitleScreen()
+        waitThenMovetoTitleScene()
         
     }
+    //END OF FUNC: playerCollision
     
-    func waitThemMovetoTitleScreen() {
+    func waitThenMovetoTitleScene() {
+        let wait = SKAction.waitForDuration(3.0)
+        let transition  = SKAction.runBlock{
+            self.view?.presentScene(TitleScene(), transition: SKTransition.crossFadeWithDuration(0.3))
+        }
         
+        let sequence = SKAction.sequence([wait, transition])
+        
+        self.runAction(SKAction.repeatAction(sequence, count:1))
+    
     }
-    //END OF FUNC: waitThemMovetoTitleScreen
-
+    //END OF FUNC: waitThenMovetoTitleScreen
     
     func updateScore() {
         scoreLabel!.text = "Score: \(score)"

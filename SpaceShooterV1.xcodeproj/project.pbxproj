@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04926C4F1D6E950700C018F4 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04926C4E1D6E950700C018F4 /* TitleScene.swift */; };
+		04926C531D6F841300C018F4 /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04926C521D6F841300C018F4 /* TitleScene.sks */; };
 		04FB6A021D6DD5C7001B1B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB6A011D6DD5C7001B1B5C /* AppDelegate.swift */; };
 		04FB6A041D6DD5C7001B1B5C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04FB6A031D6DD5C7001B1B5C /* GameScene.sks */; };
 		04FB6A061D6DD5C7001B1B5C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB6A051D6DD5C7001B1B5C /* GameScene.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04926C4E1D6E950700C018F4 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleScene.swift; path = ../TitleScene.swift; sourceTree = "<group>"; };
+		04926C521D6F841300C018F4 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		04FB69FE1D6DD5C7001B1B5C /* SpaceShooterV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceShooterV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FB6A011D6DD5C7001B1B5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FB6A031D6DD5C7001B1B5C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		04FB6A001D6DD5C7001B1B5C /* SpaceShooterV1 */ = {
 			isa = PBXGroup;
 			children = (
+				04926C4E1D6E950700C018F4 /* TitleScene.swift */,
+				04926C521D6F841300C018F4 /* TitleScene.sks */,
 				04FB6A451D6E228B001B1B5C /* shipexplode.sks */,
 				04FB6A371D6E215E001B1B5C /* explosion.sks */,
 				04FB6A381D6E215E001B1B5C /* spark.png */,
@@ -253,6 +259,7 @@
 				04FB6A041D6DD5C7001B1B5C /* GameScene.sks in Resources */,
 				04FB6A3A1D6E215E001B1B5C /* spark.png in Resources */,
 				04FB6A101D6DD5C7001B1B5C /* LaunchScreen.storyboard in Resources */,
+				04926C531D6F841300C018F4 /* TitleScene.sks in Resources */,
 				04FB6A0D1D6DD5C7001B1B5C /* Assets.xcassets in Resources */,
 				04FB6A461D6E228B001B1B5C /* shipexplode.sks in Resources */,
 				04FB6A391D6E215E001B1B5C /* explosion.sks in Resources */,
@@ -285,6 +292,7 @@
 			files = (
 				04FB6A061D6DD5C7001B1B5C /* GameScene.swift in Sources */,
 				04FB6A081D6DD5C7001B1B5C /* GameViewController.swift in Sources */,
+				04926C4F1D6E950700C018F4 /* TitleScene.swift in Sources */,
 				04FB6A021D6DD5C7001B1B5C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
